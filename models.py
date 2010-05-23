@@ -2,7 +2,6 @@ from django.db import models
 from tagging.fields import TagField
 from django.contrib.auth.models import User
 from pygments import formatters, highlight, lexers
-from kb import managers
 import textile
 
 class WithDate(models.Model):
@@ -22,8 +21,6 @@ class Language(WithDate):
 
     class Meta:
         ordering = ['name']
-
-    objects = managers.LanguageManager()
 
     def __unicode__(self):
         return self.name
@@ -50,8 +47,6 @@ class Snippet(WithDate):
 
     class Meta:
         ordering = ['-date_created']
-
-    # objects = managers.SnippetManager()
 
     def __unicode__(self):
         return self.title
